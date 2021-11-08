@@ -1,4 +1,61 @@
-<h1>ESTA ES LA PAGINA DE COMPRAS</h1>
-<input type="text" [(ngModel)]="user">
-<input type="password" [(ngModel)]="password">
-<button (click)="iniciarSesion()">Iniciar Sesión</button>
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col col-lg-4 col-md-12">
+            <h1>AGREGAR/EDITAR PRODUCTO</h1>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="productForm.nombre">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Marca" [(ngModel)]="productForm.marca">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Categoría" [(ngModel)]="productForm.categoria">
+            </div>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" placeholder="Precio" [(ngModel)]="productForm.precio">
+            </div>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" placeholder="Lote" [(ngModel)]="productForm.lote">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Presentación" [(ngModel)]="productForm.presentacion">
+            </div>
+            <button class="btn btn-danger" (click)="limpiarProducto()">LIMPIAR</button>
+            <button class="btn btn-primary" (click)="guardarProducto()">GUARDAR</button>
+        </div>
+        <div class="col col-lg-8 col-md-12">
+            <h1 style="text-align: center;">PRODUCTOS</h1>
+            <table class="table-striped">
+                <tr>
+                    <th class="table-success">NOMBRE</th>
+                    <th class="table-success">MARCA</th>
+                    <th class="table-success">CATEGORÍA</th>
+                    <th class="table-success">PRECIO</th>
+                    <th class="table-success">LOTE</th>
+                    <th class="table-success">PRESENTACIÓN</th>
+                    <th class="table-success">ACCIONES</th>
+                </tr>
+                <tr *ngFor="let producto of productos">
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.marca}}</td>
+                    <td>{{producto.categoria}}</td>
+                    <td>${{producto.precio}}</td>
+                    <td>{{producto.lote}}</td>
+                    <td>{{producto.presentacion}}</td>
+                    <td><button class="btn btn-success" (click)="editarProducto(producto)">EDITAR</button>
+                        <button class="btn btn-warning" (click)="eliminarProducto(producto.$key)">ELIMINAR</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <input [(ngModel)]="user" type="text" placeholder="Introduce tu correo">
+        <input [(ngModel)]="password" type="password" placeholder="Introduce tu contraseña">
+        <button (click)="login()">LOGIN</button>
+        <hr>
+        <h6>O LOGEATE CON</h6>
+        <img src="../../assets/fb_logo.svg" (click)="loginFacebook()">
+    </div>
+</div>
