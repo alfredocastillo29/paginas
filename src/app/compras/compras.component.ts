@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import * as firebaseInstance from 'firebase/app';
 
 @Component({
   selector: 'app-compras',
@@ -29,7 +29,7 @@ export class ComprasComponent implements OnInit {
     presentacion: string
   }
 
-  constructor(private router: Router, public firebase: AngularFireDatabase, public authFirebase: AngularFireAuth) {
+  constructor(private router: Router, public firebase: AngularFireDatabase, public autenticador: AngularFireAuth) {
     this.productForm = {
       $key: '',
       nombre: '',
@@ -139,7 +139,7 @@ export class ComprasComponent implements OnInit {
   }
 
   loginFacebook(){
-    this.authFirebase.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    this.autenticador.auth.signInWithPopup(new firebaseInstance.auth.FacebookAuthProvider())
   }
 
 }
